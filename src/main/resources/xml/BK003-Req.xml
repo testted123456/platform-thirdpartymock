@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	<MSG_HEAD>
+		<!-- 交易码 -->
+		<tranCode>BK002</tranCode>
+		<!-- 签约流水号  -->
+		<systemNo>910000000095</systemNo>
+		<!-- 商户号  -->
+		<merchId>1001</merchId>
+		<timestamp>20160901172200</timestamp>
+	</MSG_HEAD>
+	<MSG_BODY>
+		<!-- 短信验证码 -->
+		<smsCode>936400</smsCode>
+		<!-- 下级商户号 -->
+		<subMerch>下级商户</subMerch>
+	</MSG_BODY>
+</ROOT>

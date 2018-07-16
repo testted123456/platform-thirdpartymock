@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	<MSG_HEAD>
+		<!-- 交易码 -->
+		<tranCode>ZF003</tranCode>
+		<!-- 流水号 -->
+		<systemNo>quickp2018071120220900017598</systemNo>
+		<!-- 商户号 -->
+		<merchId>1028</merchId>
+		<!-- 请求日期 -->
+		<date>20180711</date>
+		<!-- 请求时间 -->
+		<time>202209</time>
+	</MSG_HEAD>
+	<MSG_BODY>
+		<!-- 持卡人姓名 -->
+		<cardName>某某某</cardName>
+		<!-- 卡号 -->
+		<cardNo>6217710204605794</cardNo>
+		<!-- 二级商户 -->
+		<subMerch>88745D279111910</subMerch>
+		<!-- CVN码,三位安全码  ZF001返回 cvn为Y时必填 -->
+		<cvn></cvn>
+		<!-- 有效期,YYMM ZF001返回 cvn为Y时必填 -->
+		<expireDate></expireDate>
+	</MSG_BODY>
+</ROOT>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	<MSG_HEAD>
+		<!-- 交易码  -->
+		<tranCode>BK001</tranCode>
+		<!-- 签约流水号  -->
+		<systemNo>910000000095</systemNo>
+		<!-- 商户号  -->
+		<merchId>1001</merchId>
+		<!-- 交易日期 -->
+		<date>201609011</date>
+		<!-- 交易时间  -->
+		<time>72200</time>
+	</MSG_HEAD>
+	<MSG_BODY>
+		<!-- 卡号 -->
+		<cardNo>6228480258367567470</cardNo>
+		<!-- 持卡人姓名 -->
+		<cardName>张三</cardName>
+		<!-- 账户类型 1：借记卡 2：贷记卡 3:准贷记卡 -->
+		<cardType>1</cardType>
+		<!-- 证件类型  01：身份证，目前只支持身份证-->
+		<certType>01</certType>
+		<!-- 证件号码 -->
+		<certNo>370522199011111234</certNo>
+		<!-- 手机号码 -->
+		<cardPhone>13305313333</cardPhone>
+		<!-- 二级商户  -->
+		<subMerch>下级商户号</subMerch>
+	</MSG_BODY>
+</ROOT>

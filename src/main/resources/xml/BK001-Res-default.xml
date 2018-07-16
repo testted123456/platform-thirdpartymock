@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resp>
+	<!-- 交易码, 原样返回 -->
+	<tranCode>auto</tranCode>
+	<!-- 商户号, 原样返回 -->
+	<merchId>auto</merchId>
+	<returnCode>0000</returnCode>
+	<returnMsg>成功</returnMsg>
+	<!-- 返回类型, S:成功，E:失败  R:不确定 -->
+	<respType>S</respType>
+	<!-- 流水号, 原样返回签约流水号 -->
+	<systemNo>auto</systemNo>
+	<!-- 是否需要验证码, 0：不需要1：需要短信-->
+	<ifNeedSms>1</ifNeedSms>
+</resp>

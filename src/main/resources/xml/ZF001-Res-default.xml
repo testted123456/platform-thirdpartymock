@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resp>
+	<!-- 商户号,原样返回 -->
+	<merchId>auto</merchId>
+	<!-- 商户号,原样返回 -->
+	<tranCode>auto</tranCode>
+	<!-- 返回码 -->
+	<returnCode>0000</returnCode>
+	<!-- 返回描述 -->
+	<returnMsg>交易成功</returnMsg>
+	<!-- 返回类型 S:成功，E:失败  R:不确定 -->
+	<respType>S</respType>
+	<!-- 流水号, 原样返回  -->
+	<systemNo>auto</systemNo>
+	<!-- 是否需要验证码,0不需要  1需要 -->
+	<ifNeedSms>0</ifNeedSms>
+	<!-- 快捷支付上送渠道的订单号 -->
+	<orderNo>auto</orderNo>
+	<!-- 是否需要输入cvn和有效期  N 不需要  Y 需要-->
+	<cvn>Y</cvn>
+</resp>

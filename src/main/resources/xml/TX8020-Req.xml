@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	<MSG_HEAD>
+		<!-- 交易码 -->
+		<tranCode>TX8020</tranCode>
+		<!-- 商户号 -->
+		<merchId>1001</merchId>
+		<date>20160901</date>
+		<time>172200</time>
+	</MSG_HEAD>
+	<MSG_BODY>
+		<!-- 二级业务代码 -->
+		<subMerch>00000000000000</subMerch>
+		<!-- 流水号 -->
+		<systemNo>910000000095</systemNo>
+		<!-- 原支付流水号 -->
+		<orgSysNo>230000000195</orgSysNo>
+		<!-- 清算金额 -->
+		<orderAmt>1000.35</orderAmt>
+		<!-- 清算类型,0:D0提现  1：T+1提现 -->
+		<flag>0</flag>
+		<!-- 商户类型,DM:大商户模式 ZM:逐商户模式-->
+		<merchType>DM</merchType>
+		<!-- 清算卡号, 当merchType为DM 时必输 -->
+		<cardNo>6228482829292892029</cardNo>
+		<!-- 持卡人 , 当merchType为DM 时必输-->
+		<cardName>张三</cardName>
+		<!-- 办卡预留手机号 -->
+		<cardPhone>186156479479</cardPhone>
+		<!-- 身份证号 -->
+		<certNo>3798028082708297439</certNo>
+		<!-- 联行号 ，T+1必输-->
+		<openBankId>11100101</openBankId>
+		<!-- 开户行名称 ，T+1必输 -->
+		<openBankName>建设银行山钢支行</openBankName>
+		<!-- 对公对私 ，0:对公  1：对私  对公只支持T+1-->
+		<per>1</per>
+	</MSG_BODY>
+</ROOT>

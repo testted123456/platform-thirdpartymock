@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	<MSG_HEAD>
+		<tranCode>ZF001</tranCode>
+		<systemNo>quickp2018071115274700017587</systemNo>
+		<merchId>1028</merchId>
+		<date>20180711</date>
+		<time>152747</time>
+	</MSG_HEAD>
+	<MSG_BODY>
+		<!-- 持卡人姓名 -->
+		<cardName>某某某</cardName>
+		<!-- 银行卡号 -->
+		<cardNo>6217710204605794</cardNo>
+		<!-- 交易金额 -->
+		<orderAmt>222.00</orderAmt>
+		<!-- 订单主题 -->
+		<orderTitle>kuaijiezhifu</orderTitle>
+		<!-- 商品描述 -->
+		<orderDesc>快捷支付</orderDesc>
+		<!-- 二级商户 -->
+		<subMerch>88745D279111910</subMerch>
+		<!-- 业务类型 -->
+		<bizType>100099</bizType>
+		<!-- 支付商户号 -->
+		<subMerchNo>000100200000005</subMerchNo>
+	</MSG_BODY>
+</ROOT>

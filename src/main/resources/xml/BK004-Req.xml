@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	<MSG_HEAD>
+		<!-- 交易码 -->
+		<tranCode>BK004</tranCode>
+		<!-- 商户号  -->
+		<merchId>1001</merchId>
+		<!-- 交易日期 -->
+		<date>20160901</date>
+		<!-- 交易时间 -->
+		<time>172200</time>
+		<!-- 解绑流水号 -->
+		<systemNo>910000000095</systemNo>
+	</MSG_HEAD>
+	<MSG_BODY>
+		<!-- 卡号 -->
+		<cardNo>6228480258367567470</cardNo>
+		<!-- 持卡人 -->
+		<cardName>张三</cardName>
+	</MSG_BODY>
+</ROOT>

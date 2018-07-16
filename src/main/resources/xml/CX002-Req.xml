@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+  <MSG_HEAD>
+  	<!-- 交易码 -->
+    <tranCode>CX002</tranCode>
+    <!-- 商户号  -->
+    <merchId>1001</merchId>
+    <!-- 交易日期 -->
+	<date>20160901</date>
+	<!-- 交易时间 -->
+	<time>172200</time>
+  </MSG_HEAD>
+  <MSG_BODY>
+  	<!-- 流水号 -->
+	<systemNo>910000000095</systemNo>
+	<!-- 二级商户代码 -->
+	<subMerch>00000000000000</subMerch>
+  </MSG_BODY>
+</ROOT>

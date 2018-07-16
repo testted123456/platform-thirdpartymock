@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+  <MSG_HEAD>
+  	<!-- 交易码 -->
+    <tranCode>CX004</tranCode> 
+    <!-- 商户号 -->
+	<merchId>1001</merchId>
+	<!-- 流水号,清算查询流水号全局唯一 -->
+	<systemNo>910000000095</systemNo>
+	<!-- 日期 -->
+	<date>20160901</date>
+	<time>172200</time>
+  </MSG_HEAD>
+  <MSG_BODY>
+ 	<!-- 二级业务代码 -->
+	<subMerch>8873702E8380</subMerch>
+	<!-- 原清算流水号 -->
+	<orgSysNo>910000000095</orgSysNo>
+  </MSG_BODY>
+</ROOT>
+

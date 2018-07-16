@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resp>
+	<!-- 交易码 -->
+	<tranCode>auto</tranCode>
+	<!-- 商户号 -->
+	<merchId>1001</merchId>
+	<!-- 返回码 -->
+	<respCode>0000</respCode>
+	<!-- 返回描述 -->
+	<respMsg>交易成功</respMsg>
+	<!-- 返回类型,S:成功，E:失败  R:不确定 -->
+	<respType>S</respType>
+	<!-- 清算日期 -->
+	<settleDate>auto</settleDate>
+	<!-- 网关流水号 -->
+	<serial>auto</serial>
+</resp>

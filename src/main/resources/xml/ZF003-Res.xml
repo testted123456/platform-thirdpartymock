@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resp>
+	<!-- 交易码,原样返回 -->
+	<tranCode>auto</tranCode>
+	<!-- 商户号,原样返回 -->
+	<merchId>auto</merchId>
+	<!-- 返回码 -->
+	<returnCode>0000</returnCode>
+	<!-- 返回描述 -->
+	<returnMsg>成功</returnMsg>
+	<!-- 返回类型 S:成功，E:失败  R:不确定 -->
+	<respType>S</respType>
+	<!-- 流水号, 原样返回  -->
+	<systemNo>auto</systemNo>
+	<!-- 清算日期 -->
+	<settleDate>auto</settleDate>
+	<!-- 快捷支付上送渠道的订单号 -->
+	<orderNo>atuo</orderNo>
+</resp>

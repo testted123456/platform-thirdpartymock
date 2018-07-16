@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resp>
+	<!-- 商户号  -->
+	<merchId>auto</merchId>
+	<!-- 交易码, 原样返回 -->
+	<tranCode>auto</tranCode>
+	<!-- 返回码 -->
+	<returnCode>0000</returnCode>
+	<!-- 返回描述 -->
+	<returnMsg>成功</returnMsg>
+	<!-- 返回类型, S:成功，E:失败  R:不确定 -->
+	<respType>S</respType>
+	<!-- 流水号,原样返回 -->
+	<systemNo>910000000095</systemNo>
+	<nextStep></nextStep>
+</resp>

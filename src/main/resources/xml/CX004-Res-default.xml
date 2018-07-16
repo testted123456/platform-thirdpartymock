@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resp>
+	<returnCode>0000</returnCode>
+	<returnMsg>查询成功</returnMsg>
+	<!-- 返回类型, S:成功，E:失败  R:不确定 -->
+	<respType>S</respType>
+	<orgTranStatus>0000</orgTranStatus>
+	<orgTranStatusDesc>成功</orgTranStatusDesc>
+	<!-- 原支付类型, S:成功，E:失败  R:不确定 -->
+	<orgTranType>S</orgTranType>
+	<!-- 清算日期 -->
+	<settleDate>20170304</settleDate>
+	<!-- 网关流水号 -->
+	<serial>409823048293</serial>
+</resp>
