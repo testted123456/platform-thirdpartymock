@@ -1,6 +1,8 @@
 package com.platform.apps.thirdpartymock.controller;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.platform.apps.thirdpartymock.component.ApplicationContextProvider;
 import com.platform.apps.thirdpartymock.component.result.Result;
 import com.platform.apps.thirdpartymock.component.result.ResultUtil;
+import com.platform.apps.thirdpartymock.entity.FastPayOrder;
 import com.platform.apps.thirdpartymock.rule.Rule;
+import com.platform.apps.thirdpartymock.service.FastPayOrderService;
 
 @RequestMapping(value="fastPay")
 @Controller
@@ -24,6 +28,9 @@ public class FastPayController {
 	
 	@Autowired
 	ApplicationContextProvider applicationContextProvider;
+	
+	@Autowired
+	FastPayOrderService fastPayOrderService;
 	
 	@GetMapping(value="getInfos")
 	@ResponseBody
@@ -52,6 +59,18 @@ public class FastPayController {
 		Rule rule = applicationContextProvider.getBean(name + "Rule", com.platform.apps.thirdpartymock.rule.Rule.class);
 		rule.setDefault(name);
 		return ResultUtil.success();
+	}
+	
+	@RequestMapping(value="getFastPayCallBack")
+	@ResponseBody
+	public Result getFastPayCallBack() {
+		logger.info("开始获取需要回调的支付订单");
+		List<FastPayOrder> list = fastPayOrderService.getFastPayCallBack();
+		
+		List<String> cardNos = 
+				list.stream().map(x->{return x.getCardNo();}).collect(Collectors.toList());
+		
+		return ResultUtil.success(cardNos);
 	}
 
 }

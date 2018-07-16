@@ -67,6 +67,12 @@ public class ZF003Rule extends Rule{
 			}
 		}
 		
+		Node respType =  this.docResponse.selectSingleNode("/resp/respType");
+		
+		if("R".equals(respType.getText())){
+			fastPayOrderService.updateStatus(reqSystemNo.getText(), (short)1);
+		}
+		
 		return this.docResponse.asXML();
 	}
 }

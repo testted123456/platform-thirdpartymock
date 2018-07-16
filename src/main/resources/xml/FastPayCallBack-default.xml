@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	<!-- 机构支付流水号 -->
+	<serial>auto</serial>
+	<!-- 渠道流水号 -->
+	<orderId>auto</orderId>
+	<!-- 清算日期 -->
+	<settleDate>auto</settleDate>
+	<!-- 支付状态码 -->
+	<returnCode>0000</returnCode>
+	<!-- 支付描述 -->
+	<returnMsg>支付成功</returnMsg>
+	<!-- 支付结果类型 -->
+	<respType>S</respType>
+	<!-- 支付金额 -->
+	<tranAmt>auto</tranAmt>
+	<!-- 支付卡号 -->
+	<cardNo>auto</cardNo>
+	<!-- 机构号 -->
+	<merchId>auto</merchId>
+	<!-- 签名值 -->
+	<sign>BHKDHKHSHBDJNSBKSK</sign>
+</ROOT>

@@ -38,6 +38,12 @@ public class BK003Rule extends Rule{
 			resSystemNo.setText(reqSystemNo.getText());
 		}
 		
+		Node respType  = this.docResponse.selectSingleNode("/resp/respType");
+		
+		if("R".equals(respType.getText())){
+			
+		}
+		
 		return this.docResponse.asXML();
 	}
 }

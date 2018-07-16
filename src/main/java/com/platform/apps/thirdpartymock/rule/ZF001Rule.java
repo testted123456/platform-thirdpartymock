@@ -52,7 +52,9 @@ public class ZF001Rule extends Rule{
 			resOrderNo.setText(randomNo);
 		}
 		
-		fastPayOrderService.add(reqSystemNo.getText(), resOrderNo.getText());
+		Node cardNo = reqDocument.selectSingleNode("/ROOT/MSG_BODY/cardNo");
+		
+		fastPayOrderService.add(reqSystemNo.getText(), resOrderNo.getText(), cardNo.getText(), (short)0);
 		
 		return this.docResponse.asXML();
 	}
