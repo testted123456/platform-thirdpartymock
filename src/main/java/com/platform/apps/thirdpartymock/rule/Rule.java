@@ -1,6 +1,8 @@
 package com.platform.apps.thirdpartymock.rule;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,12 +12,14 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
+import org.springframework.util.ResourceUtils;
 
 public abstract class Rule {
 
@@ -29,22 +33,42 @@ public abstract class Rule {
 	}*/
 	
 	public void init() {
+		SAXReader saxReader = new SAXReader();
+		
 		try {
-			SAXReader saxReader = new SAXReader();
-			docRequest = saxReader.read("src/main/resources/xml/" + name + "-Req.xml");
-			docResponse = saxReader.read("src/main/resources/xml/" + name + "-Res.xml");
-		} catch (DocumentException e) {
+			File requestFile = ResourceUtils.getFile("classpath:xml/" + name + "-Req.xml");
+			File responseFile = ResourceUtils.getFile("classpath:xml/" + name + "-Res.xml");
+			docRequest = saxReader.read(requestFile);
+			docResponse = saxReader.read(responseFile);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	public Map<String, String> getInfos(){
-		try {
 			SAXReader saxReader = new SAXReader();
-			docRequest = saxReader.read("src/main/resources/xml/" + name + "-Req.xml");
+			/*docRequest = saxReader.read("src/main/resources/xml/" + name + "-Req.xml");
 			docResponse = saxReader.read("src/main/resources/xml/" + name + "-Res.xml");
-			docDefaultResponse = saxReader.read("src/main/resources/xml/" + name + "-Res-default.xml");
+			docDefaultResponse = saxReader.read("src/main/resources/xml/" + name + "-Res-default.xml");*/
+			
+			try {
+				File requestFile = ResourceUtils.getFile("classpath:xml/" + name + "-Req.xml");
+				File responseFile = ResourceUtils.getFile("classpath:xml/" + name + "-Res.xml");
+				File defaultResponseFile  = ResourceUtils.getFile("classpath:xml/" + name + "-Res-default.xml");
+				docRequest = saxReader.read(requestFile);
+				docResponse = saxReader.read(responseFile);
+				docDefaultResponse = saxReader.read(defaultResponseFile);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch (DocumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			String request = docRequest.asXML();
 			String response = docResponse.asXML();
@@ -56,12 +80,7 @@ public abstract class Rule {
 			map.put("defaultResponse", defaultResponse);
 			
 			return map;
-		} catch (DocumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		return null;
 	}
 	
 	//设置响应
