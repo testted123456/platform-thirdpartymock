@@ -58,11 +58,18 @@ public abstract class Rule {
 			
 			try {
 				
-				URL url = ResourceUtils.getURL("classpath:xml/" + name + "-Req.xml");
-				System.out.println("url is : " + url.toString());
-				File requestFile = ResourceUtils.getFile("classpath:xml/" + name + "-Req.xml");
-				File responseFile = ResourceUtils.getFile("classpath:xml/" + name + "-Res.xml");
-				File defaultResponseFile  = ResourceUtils.getFile("classpath:xml/" + name + "-Res-default.xml");
+				URL requestUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Req.xml");
+				System.out.println("requestUrl is : " + requestUrl.toString());
+				URL responseUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Res.xml");
+				System.out.println("responseUrl is : " + responseUrl.toString());
+				URL defaultResponseUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Res-default.xml");
+				System.out.println("defaultResponseUrl is : " + responseUrl.toString());
+				File requestFile = ResourceUtils.getFile(requestUrl);
+//						ResourceUtils.getFile("classpath:xml/" + name + "-Req.xml");
+				File responseFile = ResourceUtils.getFile(responseUrl);
+//						ResourceUtils.getFile("classpath:xml/" + name + "-Res.xml");
+				File defaultResponseFile  =ResourceUtils.getFile(defaultResponseUrl);
+//						ResourceUtils.getFile("classpath:xml/" + name + "-Res-default.xml");
 				docRequest = saxReader.read(requestFile);
 				docResponse = saxReader.read(responseFile);
 				docDefaultResponse = saxReader.read(defaultResponseFile);
