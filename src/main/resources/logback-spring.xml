@@ -15,7 +15,7 @@
 			<pattern>%date [%thread] %-5level %logger{50}:%L - %msg%n</pattern>
 		</encoder> <!--滚动策略 -->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> <!--路径 -->
-			<fileNamePattern>./case.logs/info.%d.log</fileNamePattern>
+			<fileNamePattern>./mock.logs/info.%d.log</fileNamePattern>
 		</rollingPolicy>
 	</appender>
 	<appender name="fileErrorLog"
@@ -27,7 +27,7 @@
 			<pattern>%date [%thread] %-5level %logger{50}:%L - %msg%n</pattern>
 		</encoder> <!--滚动策略 -->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> <!--路径 -->
-			<fileNamePattern>./case.logs/error.%d.log</fileNamePattern>
+			<fileNamePattern>./mock.logs/error.%d.log</fileNamePattern>
 		</rollingPolicy>
 	</appender>
 	<root level="info">
