@@ -53,36 +53,32 @@ public abstract class Rule {
 	}
 	
 	public Map<String, String> getInfos(){
+		
 			SAXReader saxReader = new SAXReader();
 			/*docRequest = saxReader.read("src/main/resources/xml/" + name + "-Req.xml");
 			docResponse = saxReader.read("src/main/resources/xml/" + name + "-Res.xml");
 			docDefaultResponse = saxReader.read("src/main/resources/xml/" + name + "-Res-default.xml");*/
 			
 			try {
-				Resource resource =
-				new ClassPathResource("xml/" + name + "-Req.xml");
-				try {
-					File file = resource.getFile();
-					System.out.println("file exists:"+ file.exists());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				URL requestUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Req.xml");
-				System.out.println("requestUrl is : " + requestUrl.toString());
-				URL responseUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Res.xml");
-				System.out.println("responseUrl is : " + responseUrl.toString());
-				URL defaultResponseUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Res-default.xml");
-				System.out.println("defaultResponseUrl is : " + responseUrl.toString());
-				File requestFile = ResourceUtils.getFile(requestUrl);
-//						ResourceUtils.getFile("classpath:xml/" + name + "-Req.xml");
-				File responseFile = ResourceUtils.getFile(responseUrl);
-//						ResourceUtils.getFile("classpath:xml/" + name + "-Res.xml");
-				File defaultResponseFile  =ResourceUtils.getFile(defaultResponseUrl);
-//						ResourceUtils.getFile("classpath:xml/" + name + "-Res-default.xml");
-				docRequest = saxReader.read(requestFile);
-				docResponse = saxReader.read(responseFile);
-				docDefaultResponse = saxReader.read(defaultResponseFile);
+//				URL requestUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Req.xml");
+//				System.out.println("requestUrl is : " + requestUrl.toString());
+//				URL responseUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Res.xml");
+//				System.out.println("responseUrl is : " + responseUrl.toString());
+//				URL defaultResponseUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Res-default.xml");
+//				System.out.println("defaultResponseUrl is : " + responseUrl.toString());
+//				File requestFile = ResourceUtils.getFile(requestUrl);
+////						ResourceUtils.getFile("classpath:xml/" + name + "-Req.xml");
+//				File responseFile = ResourceUtils.getFile(responseUrl);
+////						ResourceUtils.getFile("classpath:xml/" + name + "-Res.xml");
+//				File defaultResponseFile  =ResourceUtils.getFile(defaultResponseUrl);
+////						ResourceUtils.getFile("classpath:xml/" + name + "-Res-default.xml");
+				
+				InputStream  reqIS = this.getClass().getResourceAsStream("/xml/" + name + "-Req.xml");
+				InputStream  resIS = this.getClass().getResourceAsStream("/xml/" + name + "-Req.xml");
+				InputStream  deRresIS = this.getClass().getResourceAsStream("/xml/" + name + "-Res-default.xml");
+				docRequest = saxReader.read(reqIS);
+				docResponse = saxReader.read(resIS);
+				docDefaultResponse = saxReader.read(deRresIS);
 				
 				String request = docRequest.asXML();
 				System.out.println("request is:" + request);
@@ -97,9 +93,6 @@ public abstract class Rule {
 				map.put("defaultResponse", defaultResponse);
 				
 				return map;
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}catch (DocumentException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
