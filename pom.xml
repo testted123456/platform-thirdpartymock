@@ -91,7 +91,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			 <plugin>
+			 <!-- <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
@@ -112,8 +112,16 @@
  
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
 		</plugins>
+		<resources>
+			<resource>
+			<directory>src/main/resources</directory>
+			<includes>
+			<include>**/*</include>
+			</includes>
+			</resource>
+		</resources>
 	</build>
 
 	<repositories>
