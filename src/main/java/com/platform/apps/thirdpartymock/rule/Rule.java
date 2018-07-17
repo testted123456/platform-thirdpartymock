@@ -20,6 +20,8 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.util.ResourceUtils;
 
 public abstract class Rule {
@@ -57,7 +59,15 @@ public abstract class Rule {
 			docDefaultResponse = saxReader.read("src/main/resources/xml/" + name + "-Res-default.xml");*/
 			
 			try {
-				
+				Resource resource =
+				new ClassPathResource("xml/" + name + "-Req.xml");
+				try {
+					File file = resource.getFile();
+					System.out.println("file exists:"+ file.exists());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				URL requestUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Req.xml");
 				System.out.println("requestUrl is : " + requestUrl.toString());
 				URL responseUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Res.xml");
