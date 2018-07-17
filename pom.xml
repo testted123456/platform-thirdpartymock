@@ -91,16 +91,29 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			 <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+ 
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
-		<resources>
-			<resource>
-			<directory>src/main/resources/xml</directory>
-            <filtering>false</filtering>
-            <includes>
-                <include>*.xml</include>
-            </includes>
-			</resource>
-		</resources>
 	</build>
 
 	<repositories>
