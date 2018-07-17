@@ -110,6 +110,16 @@ public abstract class Rule {
 				}
 			}
 		}
+		
+		InputStream  resIS = this.getClass().getResourceAsStream("/xml/" + name + "-Res.xml");
+		SAXReader saxReader = new SAXReader();
+		try {
+			docResponse = saxReader.read(resIS);
+			System.out.println("xxx: " + docResponse.asXML());
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	//响应设置为默认
