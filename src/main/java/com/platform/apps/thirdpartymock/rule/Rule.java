@@ -1,10 +1,6 @@
 package com.platform.apps.thirdpartymock.rule;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.fileUpload;
-
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,16 +11,12 @@ import java.io.Writer;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.util.ResourceUtils;
 
 public abstract class Rule {
 	
@@ -55,7 +47,6 @@ public abstract class Rule {
 	}
 	
 	public Map<String, String> getInfos(){
-		
 			SAXReader saxReader = new SAXReader();
 			
 			try {
