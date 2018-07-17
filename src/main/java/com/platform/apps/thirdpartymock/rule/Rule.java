@@ -16,6 +16,7 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
+import org.springframework.beans.factory.annotation.Value;
 
 public abstract class Rule {
 	
@@ -24,12 +25,15 @@ public abstract class Rule {
 	Document docResponse;
 	Document docDefaultResponse;
 	
+	@Value("${xmlPath}")
+    String xmlPath;
+	
 	public void init() {
 		SAXReader saxReader = new SAXReader();
 		
 		try {
-			InputStream  reqIS = this.getClass().getResourceAsStream("/xml/" + name + "-Req.xml");
-			InputStream  resIS = this.getClass().getResourceAsStream("/xml/" + name + "-Res.xml");
+			InputStream  reqIS = this.getClass().getResourceAsStream(xmlPath + name + "-Req.xml");
+			InputStream  resIS = this.getClass().getResourceAsStream(xmlPath + name + "-Res.xml");
 			
 			docRequest = saxReader.read(reqIS);
 			docResponse = saxReader.read(resIS);
@@ -43,9 +47,9 @@ public abstract class Rule {
 			SAXReader saxReader = new SAXReader();
 			
 			try {
-				InputStream  reqIS = this.getClass().getResourceAsStream("/xml/" + name + "-Req.xml");
-				InputStream  resIS = this.getClass().getResourceAsStream("/xml/" + name + "-Res.xml");
-				InputStream  deRresIS = this.getClass().getResourceAsStream("/xml/" + name + "-Res-default.xml");
+				InputStream  reqIS = this.getClass().getResourceAsStream(xmlPath + name + "-Req.xml");
+				InputStream  resIS = this.getClass().getResourceAsStream(xmlPath + name + "-Res.xml");
+				InputStream  deRresIS = this.getClass().getResourceAsStream(xmlPath + name + "-Res-default.xml");
 				docRequest = saxReader.read(reqIS);
 				docResponse = saxReader.read(resIS);
 				docDefaultResponse = saxReader.read(deRresIS);
@@ -83,7 +87,7 @@ public abstract class Rule {
 			format.setIndent(true); //设置是否缩进
 			format.setIndent("    "); //以四个空格方式实现缩进
 			format.setNewlines(true); //设置是否换行
-			URL url = this.getClass().getResource("/xml/" + name + "-Res.xml");
+			URL url = this.getClass().getResource(xmlPath + name + "-Res.xml");
 			File file = new File(url.toURI());
 			out = new FileWriter(file);
 			writer = new XMLWriter(out, format);
@@ -111,11 +115,10 @@ public abstract class Rule {
 			}
 		}
 		
-		InputStream  resIS = this.getClass().getResourceAsStream("/xml/" + name + "-Res.xml");
+		InputStream  resIS = this.getClass().getResourceAsStream(xmlPath + name + "-Res.xml");
 		SAXReader saxReader = new SAXReader();
 		try {
 			docResponse = saxReader.read(resIS);
-			System.out.println("xxx: " + docResponse.asXML());
 		} catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,8 +132,8 @@ public abstract class Rule {
 		
 		try {
 		    is = 
-		    this.getClass().getResourceAsStream("/xml/" + name + "-Res-default.xml");
-			URL url = this.getClass().getResource("/xml/" + name + "-Res.xml");
+		    this.getClass().getResourceAsStream(xmlPath + name + "-Res-default.xml");
+			URL url = this.getClass().getResource(xmlPath + name + "-Res.xml");
 			File file = new File(url.toURI());
 			os = new FileOutputStream(file);
 			byte [] buffer = new byte[1024];

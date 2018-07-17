@@ -13,3 +13,4 @@ spring:
     show-sql: true
 socketServer:
   port: 7071
+xmlPath: /home/ted/project/xml/
