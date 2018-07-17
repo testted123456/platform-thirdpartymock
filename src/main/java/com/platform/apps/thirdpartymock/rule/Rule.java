@@ -1,6 +1,7 @@
 package com.platform.apps.thirdpartymock.rule;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -47,12 +48,17 @@ public abstract class Rule {
 			SAXReader saxReader = new SAXReader();
 			
 			try {
-				InputStream  reqIS = this.getClass().getResourceAsStream(xmlPath + name + "-Req.xml");
+				/*InputStream  reqIS = this.getClass().getResourceAsStream(xmlPath + name + "-Req.xml");
 				InputStream  resIS = this.getClass().getResourceAsStream(xmlPath + name + "-Res.xml");
-				InputStream  deRresIS = this.getClass().getResourceAsStream(xmlPath + name + "-Res-default.xml");
-				docRequest = saxReader.read(reqIS);
-				docResponse = saxReader.read(resIS);
-				docDefaultResponse = saxReader.read(deRresIS);
+				InputStream  deRresIS = this.getClass().getResourceAsStream(xmlPath + name + "-Res-default.xml");*/
+				File reqFile = new File(xmlPath + name + "-Req.xml");
+				docRequest = saxReader.read(reqFile);
+				
+				File resFile = new File(xmlPath + name + "-Res.xml");
+				docResponse = saxReader.read(resFile);
+				
+				File resDefFile = new File(xmlPath + name + "-Res-default.xml");
+				docDefaultResponse = saxReader.read(resDefFile);
 				
 				String request = docRequest.asXML();
 				System.out.println("request is:" + request);
@@ -87,8 +93,8 @@ public abstract class Rule {
 			format.setIndent(true); //设置是否缩进
 			format.setIndent("    "); //以四个空格方式实现缩进
 			format.setNewlines(true); //设置是否换行
-			URL url = this.getClass().getResource(xmlPath + name + "-Res.xml");
-			File file = new File(url.toURI());
+//			URL url = this.getClass().getResource(xmlPath + name + "-Res.xml");
+			File file = new File(xmlPath + name + "-Res.xml");
 			out = new FileWriter(file);
 			writer = new XMLWriter(out, format);
 			writer.write(document);
@@ -115,10 +121,10 @@ public abstract class Rule {
 			}
 		}
 		
-		InputStream  resIS = this.getClass().getResourceAsStream(xmlPath + name + "-Res.xml");
+//		InputStream  resIS = this.getClass().getResourceAsStream(xmlPath + name + "-Res.xml");
 		SAXReader saxReader = new SAXReader();
 		try {
-			docResponse = saxReader.read(resIS);
+			docResponse = saxReader.read(new File(xmlPath + name + "-Res.xml"));
 		} catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -131,11 +137,11 @@ public abstract class Rule {
 		OutputStream os = null;
 		
 		try {
-		    is = 
-		    this.getClass().getResourceAsStream(xmlPath + name + "-Res-default.xml");
-			URL url = this.getClass().getResource(xmlPath + name + "-Res.xml");
-			File file = new File(url.toURI());
-			os = new FileOutputStream(file);
+		    is = new FileInputStream(xmlPath + name + "-Res-default.xml");
+//		    this.getClass().getResourceAsStream(xmlPath + name + "-Res-default.xml");
+//			URL url = this.getClass().getResource(xmlPath + name + "-Res.xml");
+//			File file = new File(url.toURI());
+			os = new FileOutputStream(xmlPath + name + "-Res.xml");
 			byte [] buffer = new byte[1024];
 			int size = 0;
 			
