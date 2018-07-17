@@ -1,5 +1,7 @@
 package com.platform.apps.thirdpartymock.rule;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.fileUpload;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -39,13 +41,13 @@ public abstract class Rule {
 		SAXReader saxReader = new SAXReader();
 		
 		try {
-			File requestFile = ResourceUtils.getFile("classpath:xml/" + name + "-Req.xml");
-			File responseFile = ResourceUtils.getFile("classpath:xml/" + name + "-Res.xml");
-			docRequest = saxReader.read(requestFile);
-			docResponse = saxReader.read(responseFile);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			File requestFile = ResourceUtils.getFile("classpath:xml/" + name + "-Req.xml");
+//			File responseFile = ResourceUtils.getFile("classpath:xml/" + name + "-Res.xml");
+			InputStream  reqIS = this.getClass().getResourceAsStream("/xml/" + name + "-Req.xml");
+			InputStream  resIS = this.getClass().getResourceAsStream("/xml/" + name + "-Res.xml");
+			
+			docRequest = saxReader.read(reqIS);
+			docResponse = saxReader.read(resIS);
 		}catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -55,26 +57,10 @@ public abstract class Rule {
 	public Map<String, String> getInfos(){
 		
 			SAXReader saxReader = new SAXReader();
-			/*docRequest = saxReader.read("src/main/resources/xml/" + name + "-Req.xml");
-			docResponse = saxReader.read("src/main/resources/xml/" + name + "-Res.xml");
-			docDefaultResponse = saxReader.read("src/main/resources/xml/" + name + "-Res-default.xml");*/
 			
 			try {
-//				URL requestUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Req.xml");
-//				System.out.println("requestUrl is : " + requestUrl.toString());
-//				URL responseUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Res.xml");
-//				System.out.println("responseUrl is : " + responseUrl.toString());
-//				URL defaultResponseUrl = ResourceUtils.getURL("classpath:xml/" + name + "-Res-default.xml");
-//				System.out.println("defaultResponseUrl is : " + responseUrl.toString());
-//				File requestFile = ResourceUtils.getFile(requestUrl);
-////						ResourceUtils.getFile("classpath:xml/" + name + "-Req.xml");
-//				File responseFile = ResourceUtils.getFile(responseUrl);
-////						ResourceUtils.getFile("classpath:xml/" + name + "-Res.xml");
-//				File defaultResponseFile  =ResourceUtils.getFile(defaultResponseUrl);
-////						ResourceUtils.getFile("classpath:xml/" + name + "-Res-default.xml");
-				
 				InputStream  reqIS = this.getClass().getResourceAsStream("/xml/" + name + "-Req.xml");
-				InputStream  resIS = this.getClass().getResourceAsStream("/xml/" + name + "-Req.xml");
+				InputStream  resIS = this.getClass().getResourceAsStream("/xml/" + name + "-Res.xml");
 				InputStream  deRresIS = this.getClass().getResourceAsStream("/xml/" + name + "-Res-default.xml");
 				docRequest = saxReader.read(reqIS);
 				docResponse = saxReader.read(resIS);
@@ -112,7 +98,9 @@ public abstract class Rule {
 			format.setIndent(true); //设置是否缩进
 			format.setIndent("    "); //以四个空格方式实现缩进
 			format.setNewlines(true); //设置是否换行
-			Writer out = new FileWriter("src/main/resources/xml/" + name + "-Res.xml");
+			URL url = this.getClass().getResource("/xml/" + name + "-Res.xml");
+			File file = new File(url.toURI());
+			Writer out = new FileWriter(file);
 			XMLWriter writer = new XMLWriter(out, format);
 			writer.write(document);
 			writer.close();
@@ -136,8 +124,15 @@ public abstract class Rule {
 		OutputStream os = null;
 		
 		try {
-		    is = new FileInputStream("src/main/resources/xml/" + name + "-Res-default.xml");
-			os = new FileOutputStream("src/main/resources/xml/" + name + "-Res.xml");
+		    is = 
+//		    		new FileInputStream("src/main/resources/xml/" + name + "-Res-default.xml");
+		    this.getClass().getResourceAsStream("/xml/" + name + "-Res-default.xml");
+//			os = new FileOutputStream("src/main/resources/xml/" + name + "-Res.xml");
+//			this.getClass().getResourceAsStream("/xml/" + name + "-Res.xml");
+			URL url = this.getClass().getResource("/xml/" + name + "-Res.xml");
+			File file = new File(url.toURI());
+			os = new FileOutputStream(file);
+			
 			byte [] buffer = new byte[1024];
 			int size = 0;
 			
