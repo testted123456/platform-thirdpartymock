@@ -12,17 +12,18 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.ResourceUtils;
+import ch.qos.logback.classic.Logger;
 
 public abstract class Rule {
-
+	
 	String name;
 	Document docRequest;
 	Document docResponse;
@@ -62,6 +63,20 @@ public abstract class Rule {
 				docRequest = saxReader.read(requestFile);
 				docResponse = saxReader.read(responseFile);
 				docDefaultResponse = saxReader.read(defaultResponseFile);
+				
+				String request = docRequest.asXML();
+				System.out.println("request is:" + request);
+				String response = docResponse.asXML();
+				System.out.println("response is:" + response);
+				String defaultResponse = docDefaultResponse.asXML();
+				System.out.println("defaultResponse is:" + defaultResponse);
+				
+				Map<String, String> map = new HashMap<>();
+				map.put("request", request);
+				map.put("response", response);
+				map.put("defaultResponse", defaultResponse);
+				
+				return map;
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -70,17 +85,7 @@ public abstract class Rule {
 				e.printStackTrace();
 			}
 			
-			String request = docRequest.asXML();
-			String response = docResponse.asXML();
-			String defaultResponse = docDefaultResponse.asXML();
-			
-			Map<String, String> map = new HashMap<>();
-			map.put("request", request);
-			map.put("response", response);
-			map.put("defaultResponse", defaultResponse);
-			
-			return map;
-		
+			return null;
 	}
 	
 	//设置响应
