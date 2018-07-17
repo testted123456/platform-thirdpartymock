@@ -95,9 +95,9 @@
 		<resources>
 			<resource>
 			<directory>src/main/resources/xml</directory>
-            <filtering>true</filtering>
+            <filtering>false</filtering>
             <includes>
-                <include>**/*.xml</include>
+                <include>*.xml</include>
             </includes>
 			</resource>
 		</resources>
