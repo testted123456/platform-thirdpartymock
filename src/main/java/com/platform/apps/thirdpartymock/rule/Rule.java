@@ -33,11 +33,13 @@ public abstract class Rule {
 		SAXReader saxReader = new SAXReader();
 		
 		try {
-			InputStream  reqIS = this.getClass().getResourceAsStream(xmlPath + name + "-Req.xml");
-			InputStream  resIS = this.getClass().getResourceAsStream(xmlPath + name + "-Res.xml");
+//			InputStream  reqIS = this.getClass().getResourceAsStream(xmlPath + name + "-Req.xml");
+//			InputStream  resIS = this.getClass().getResourceAsStream(xmlPath + name + "-Res.xml");
+			File reqFile = new File(xmlPath + name + "-Req.xml");
+			File resFile = new File(xmlPath + name + "-Res.xml");
 			
-			docRequest = saxReader.read(reqIS);
-			docResponse = saxReader.read(resIS);
+			docRequest = saxReader.read(reqFile);
+			docResponse = saxReader.read(resFile);
 		}catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -87,7 +89,7 @@ public abstract class Rule {
 		XMLWriter writer = null;
 		
 		try {
-			Document document = DocumentHelper.parseText(response);
+			Document document = DocumentHelper.parseText(response.trim());
 			OutputFormat format = OutputFormat.createCompactFormat();
 			format.setEncoding("UTF-8");
 			format.setIndent(true); //设置是否缩进
