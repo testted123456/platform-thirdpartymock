@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.StringWriter;
 import java.io.Writer;
 import java.net.URL;
 import java.util.HashMap;
@@ -25,16 +24,10 @@ public abstract class Rule {
 	Document docResponse;
 	Document docDefaultResponse;
 	
-/*	public Rule(String name) {
-		this.name = name;
-	}*/
-	
 	public void init() {
 		SAXReader saxReader = new SAXReader();
 		
 		try {
-//			File requestFile = ResourceUtils.getFile("classpath:xml/" + name + "-Req.xml");
-//			File responseFile = ResourceUtils.getFile("classpath:xml/" + name + "-Res.xml");
 			InputStream  reqIS = this.getClass().getResourceAsStream("/xml/" + name + "-Req.xml");
 			InputStream  resIS = this.getClass().getResourceAsStream("/xml/" + name + "-Res.xml");
 			
@@ -80,7 +73,8 @@ public abstract class Rule {
 	
 	//设置响应
 	public void setResponse(String name, String response) {
-		StringWriter sw = null;
+		Writer out = null;
+		XMLWriter writer = null;
 		
 		try {
 			Document document = DocumentHelper.parseText(response);
@@ -91,16 +85,25 @@ public abstract class Rule {
 			format.setNewlines(true); //设置是否换行
 			URL url = this.getClass().getResource("/xml/" + name + "-Res.xml");
 			File file = new File(url.toURI());
-			Writer out = new FileWriter(file);
-			XMLWriter writer = new XMLWriter(out, format);
+			out = new FileWriter(file);
+			writer = new XMLWriter(out, format);
 			writer.write(document);
-			writer.close();
+			writer.flush();
+			out.flush();
 		}catch (Exception e) {
 			// TODO: handle exception
 		}finally {
-			if(null != sw) {
+			if(null != writer) {
 				try {
-					sw.close();
+					writer.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(null != out) {
+				try {
+					out.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -116,14 +119,10 @@ public abstract class Rule {
 		
 		try {
 		    is = 
-//		    		new FileInputStream("src/main/resources/xml/" + name + "-Res-default.xml");
 		    this.getClass().getResourceAsStream("/xml/" + name + "-Res-default.xml");
-//			os = new FileOutputStream("src/main/resources/xml/" + name + "-Res.xml");
-//			this.getClass().getResourceAsStream("/xml/" + name + "-Res.xml");
 			URL url = this.getClass().getResource("/xml/" + name + "-Res.xml");
 			File file = new File(url.toURI());
 			os = new FileOutputStream(file);
-			
 			byte [] buffer = new byte[1024];
 			int size = 0;
 			
