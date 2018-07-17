@@ -148,7 +148,8 @@ public abstract class Rule {
 			int size = 0;
 			
 			while((size = is.read(buffer)) != -1){
-				os.write(buffer);
+//				os.write(buffer);
+				os.write(buffer, 0, size);
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
