@@ -21,8 +21,10 @@ public class FastPayOrder {
 	@Column(nullable=true, columnDefinition="varchar(255) COMMENT '银行卡号'")
 	String cardNo;
 	
+	@Column(nullable=true, columnDefinition="varchar(255) COMMENT '支付金额'")
+	String tranAmt;
+	
 	@Column(nullable=true, columnDefinition="smallint(1) COMMENT '0：订单生成，1：订单确认状态为不确定，2：回调支付成功，3：回调支付失败'")
-
 	Short optStatus;
 	
 	public Integer getId() {
@@ -55,6 +57,14 @@ public class FastPayOrder {
 
 	public void setCardNo(String cardNo) {
 		this.cardNo = cardNo;
+	}
+
+	public String getTranAmt() {
+		return tranAmt;
+	}
+
+	public void setTranAmt(String tranAmt) {
+		this.tranAmt = tranAmt;
 	}
 
 	public Short getOptStatus() {

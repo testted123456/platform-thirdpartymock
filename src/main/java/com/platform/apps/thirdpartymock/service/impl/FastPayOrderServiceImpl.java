@@ -57,4 +57,11 @@ public class FastPayOrderServiceImpl implements FastPayOrderService{
 		return list;
 	}
 
+	@Override
+	public FastPayOrder getByOrderNo(String orderNo) {
+		// TODO Auto-generated method stub
+		FastPayOrder fastPayOrder = fastPayOrderRepository.findByOrderNo(orderNo);
+		return fastPayOrder;
+	}
+
 }

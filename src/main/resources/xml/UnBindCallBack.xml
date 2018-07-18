@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ROOT>
 	<!-- 手机号 -->
-	<phone>auto</phone>
+	<phone>1348****916</phone>
 	<!-- 卡号 -->
-	<card_no>auto</card_no>
+	<card_no>6228481396393880006 </card_no>
 	<!-- 姓名 -->
-	<card_name>auto</card_name>
+	<card_name>*少春</card_name>
 	<!-- 证件号-->
-	<cert_no>auto</cert_no>
+	<cert_no>*********261815</cert_no>
 	<!-- 银行名称 -->
-	<bank_name>auto</bank_name>
+	<bank_name>农业银行</bank_name>
 	<!-- 结果-->
 	<return_code>0000</return_code>
 	<!-- 描述 -->
 	<return_msg>解约成功【通知】</return_msg>
 	<!-- 商户号 -->
-	<mer_id>auto</mer_id>
+	<mer_id>1028</mer_id>
 	<!-- 签名值 -->
 	<sign>auto</sign>
 </ROOT>

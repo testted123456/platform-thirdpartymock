@@ -1,5 +1,6 @@
 package com.platform.apps.thirdpartymock.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,6 +21,7 @@ import com.platform.apps.thirdpartymock.component.ApplicationContextProvider;
 import com.platform.apps.thirdpartymock.component.result.Result;
 import com.platform.apps.thirdpartymock.component.result.ResultUtil;
 import com.platform.apps.thirdpartymock.entity.FastPayOrder;
+import com.platform.apps.thirdpartymock.rule.CallBackRule;
 import com.platform.apps.thirdpartymock.rule.Rule;
 import com.platform.apps.thirdpartymock.service.FastPayOrderService;
 
@@ -66,16 +68,56 @@ public class FastPayController {
 		return ResultUtil.success();
 	}
 	
-	@RequestMapping(value="getFastPayCallBack")
+	@RequestMapping(value="getCallBack")
 	@ResponseBody
-	public Result getFastPayCallBack() {
+	public Result getPayCallBack(@RequestParam String name) {
 		logger.info("开始获取需要回调的支付订单");
-		List<FastPayOrder> list = fastPayOrderService.getFastPayCallBack();
 		
-		List<String> cardNos = 
-				list.stream().map(x->{return x.getCardNo();}).collect(Collectors.toList());
+		CallBackRule rule =  applicationContextProvider.getBean(name + "Rule", com.platform.apps.thirdpartymock.rule.CallBackRule.class);
 		
-		return ResultUtil.success(cardNos);
+		Map<String, String> map = rule.getInfos();
+		
+		if("fastPayCallBack".equals(name)) {
+			List<FastPayOrder> list = fastPayOrderService.getFastPayCallBack();
+//			Map<String, Object> result = new HashMap<>();
+			
+//			List<String> cardNos = 
+//					list.stream().map(x->{return x.getCardNo();}).collect(Collectors.toList());
+			Map<String,List<FastPayOrder>> cardNos =
+			list.stream().collect(Collectors.groupingBy(FastPayOrder::getCardNo));
+			
+			/*Map<String, List<String>> tmp = new HashMap<>();
+			
+			cardNos.forEach((k,v)->{
+				tmp.put(k, v.stream().map(FastPayOrder::getOrderNo).collect(Collectors.toList()));
+			});
+			
+			result.put("orders", tmp);
+			result.put("request", map.get("request"));
+			result.put("defaultRequest", map.get("defaultRequest"));*/
+//			map.put("cardNos", cardNos.toString());
+			return ResultUtil.success(cardNos);
+		}
+		
+		
+		return ResultUtil.success(map);
+	}
+	
+	@RequestMapping(value="callBack")
+	@ResponseBody
+	public Result callBack( @RequestBody Map<String, String> requestMap) {
+		String name = requestMap.get("name").toString();
+		CallBackRule rule =  applicationContextProvider.getBean(name + "Rule", com.platform.apps.thirdpartymock.rule.CallBackRule.class);
+		
+		boolean result = rule.callBack(requestMap);
+		return ResultUtil.success();
+	}
+	
+	@RequestMapping(value="getPayOrder")
+	@ResponseBody
+	public Result getPayOrder(@RequestParam String orderNo) {
+		FastPayOrder fastPayOrder =	fastPayOrderService.getByOrderNo(orderNo);
+		return ResultUtil.success(fastPayOrder);
 	}
 
 }

@@ -13,4 +13,4 @@ spring:
     show-sql: true
 socketServer:
   port: 7071
-xmlPath: /home/ted/project/xml/
+xmlPath: E:\work\eclipse\workspace\platform-thirdpartymock\src\main\resources\xml\

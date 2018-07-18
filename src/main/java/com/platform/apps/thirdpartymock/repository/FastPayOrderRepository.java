@@ -10,5 +10,7 @@ public interface FastPayOrderRepository extends JpaRepository<FastPayOrder, Stri
 
 	FastPayOrder findBySystemNo(String systemNo);
 	
+	FastPayOrder findByOrderNo(String orderNo);
+	
 	List<FastPayOrder> findByOptStatusIn(List<Short> status);
 }

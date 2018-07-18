@@ -19,5 +19,5 @@
 	<!-- 机构号 -->
 	<merchId>auto</merchId>
 	<!-- 签名值 -->
-	<sign>BHKDHKHSHBDJNSBKSK</sign>
+	<sign>auto</sign>
 </ROOT>

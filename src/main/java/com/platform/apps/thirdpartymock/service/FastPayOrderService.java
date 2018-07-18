@@ -12,5 +12,7 @@ public interface FastPayOrderService {
 	
 	public FastPayOrder getBySystemNo(String systemNo);
 	
+	public FastPayOrder getByOrderNo(String orderNo);
+	
 	public List<FastPayOrder> getFastPayCallBack();
 }
