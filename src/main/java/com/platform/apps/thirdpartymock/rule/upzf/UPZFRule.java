@@ -16,11 +16,15 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-
 import com.alibaba.fastjson.JSONObject;
 
 public abstract class UPZFRule {
+	
+	public static Logger logger = LoggerFactory.getLogger(UPZFRule.class);
+
 	
 	String name;
 	Document docRequest;
@@ -65,11 +69,12 @@ public abstract class UPZFRule {
 				docDefaultResponse = saxReader.read(resDefFile);
 				
 				String request = docRequest.asXML();
-				System.out.println("request is:" + request);
+				logger.info("request is:" + request);
+//				System.out.println("request is:" + request);
 				String response = docResponse.asXML();
-				System.out.println("response is:" + response);
+				logger.info("response is:" + response);
 				String defaultResponse = docDefaultResponse.asXML();
-				System.out.println("defaultResponse is:" + defaultResponse);
+				logger.info("defaultResponse is:" + defaultResponse);
 				
 				Map<String, String> map = new HashMap<>();
 				map.put("request", request);
@@ -77,7 +82,7 @@ public abstract class UPZFRule {
 				map.put("defaultResponse", defaultResponse);
 				
 				return map;
-			}catch (DocumentException e) {
+			}catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
