@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	<!-- 加密后的响应报文 -->
+	<encryptData>
+		 <!-- 应答码，成功：000000，补单成功：000090 -->
+		 <respCode>000000</respCode>
+		 <respType>S</respType>
+		 <!-- 对账日期 -->
+		 <settleDate>auto</settleDate>
+		 <!-- 交易金额 -->
+		 <totalAmount>auto</totalAmount>
+		 <data>
+		 	<!-- 交易金额 -->
+		 	<totalAmount>auto</totalAmount>
+		 	<!-- 清算日期 -->
+		 	<settleDate>auto</settleDate>
+		 	 <!-- 应答码，成功：000000，补单成功：000090 -->
+		 	<respType>S</respType>
+		 </data>
+	</encryptData>
+	<!-- 加密后的AES对称密钥 -->
+	<encryptKey>auto</encryptKey>
+	<!-- 服务交易码 -->
+	<tranCode>SMZF008</tranCode>
+	<!-- 请求流水号 -->
+	<reqMsgId>auto</reqMsgId>
+</ROOT>

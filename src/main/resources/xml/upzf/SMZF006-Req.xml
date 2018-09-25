@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	<!-- 加密后的请求报文 -->
+	<encryptData>
+		 <version>1.0.0</version>
+		 <!-- 交易日期 -->
+		 <reqDate>20180904155739</reqDate>
+		 <!-- 合作方报文01，扫码支付平台02 -->
+		 <msgType>01</msgType>
+		 <data>
+		 	<!-- 原交易流水号 -->
+		 	<oriReqMsgId>2018090415573900017721</oriReqMsgId>
+		 </data>
+	</encryptData>
+	<!-- 加密后的AES对称密钥 -->
+	<encryptKey></encryptKey>
+	<!-- 合作方标识 -->
+	<cooperator>10000000</cooperator>
+	<!-- 请求报文签名 -->
+	<signData></signData> 
+	<!-- 服务交易码 -->
+	<tranCode>SMZF006</tranCode>
+	<!-- 回调地址 -->
+	<callBack>http://101.231.43.94:20081/PayServer/CallBack.do?ScanCodeType=01</callBack>
+	<!-- 请求流水号 -->
+	<reqMsgId>2018090415573900017721</reqMsgId>
+</ROOT>

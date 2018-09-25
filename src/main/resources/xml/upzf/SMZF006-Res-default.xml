@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	<!-- 加密后的响应报文 -->
+	<encryptData>
+		 <version>1.0.0</version>
+		 <!-- 合作方报文01，扫码支付平台02 -->
+		 <msgType>01</msgType>
+		 <!-- 平台返回流水号 -->
+		 <smzfMsgId>auto</smzfMsgId>
+		 <!-- 请求日期 -->
+		 <reqDate>auto</reqDate>
+		 <!-- 应答日期 -->
+		 <respDate>auto</respDate>
+		 <!-- 应答类型，S:成功，E:失败，R：不确定（处理中） -->
+		 <respType>S</respType>
+		 <!-- 应答码，成功：000000，补单成功：000090 -->
+		 <respCode>000000</respCode>
+		 <!-- 描述信息 -->
+		 <respMsg>成功</respMsg>
+		 <data>
+		 	<!-- 原交易应答类型，S：成功，E：失败，R：不确定 -->
+		 	<oriRespType>S</oriRespType>
+		 	<!-- 原交易应答码，成功：000000 -->
+		 	<oriRespCode>000000</oriRespCode>
+		 	<!-- 原交易应答描述 -->
+		 	<oriRespMsg>成功</oriRespMsg>
+		 	<!-- 原交易金额 -->
+		 	<totalFee>auto</totalFee>
+		 </data>
+	</encryptData>
+	<!-- 加密后的AES对称密钥 -->
+	<encryptKey>auto</encryptKey>
+	<!-- 报文签名 -->
+	<signData>auto</signData> 
+	<!-- 服务交易码 -->
+	<tranCode>SMZF006</tranCode>
+	<!-- 请求流水号 -->
+	<reqMsgId>auto</reqMsgId>
+</ROOT>
