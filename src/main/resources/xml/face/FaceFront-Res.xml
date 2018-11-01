@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ROOT>
+	 <race>汉</race>
+	 <name>测试用户</name>
+	 <time_used>358</time_used>
+	 <gender>男</gender>
+	 <id_card_number>auto</id_card_number>
+	 <request_id>1540178543,ed0d744f-dbf4-4177-b012-25eaa374646c</request_id>
+	 <birthday>
+		  <year>auto</year>
+		  <day>auto</day>
+		  <month>auto</month>
+	 </birthday>
+	 <legality>
+		  <Edited>0.0</Edited>
+		  <Photocopy>0.0</Photocopy>
+		  <ID_Photo>0.981</ID_Photo>
+		  <Screen>0.019</Screen>
+		  <Temporary_ID_Photo>0.0</Temporary_ID_Photo>
+	  </legality>
+	  <address>auto</address>
+	  <head_rect>
+		   <rt>
+			    <x>0.8630137</x>
+			    <y>0.18814433</y>
+		   </rt>
+		   <lt>
+			    <x>0.60958904</x>
+			    <y>0.19458763</y>
+		   </lt>
+		   <rb>
+			    <x>0.88508373</x>
+			    <y>0.68427837</y>
+		   </rb>
+	  </head_rect>
+	 <side>front</side>
+</ROOT>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	 <!-- 业务流水号 -->
+	 <SerialNo>auto</SerialNo>
+	 <!-- 业务系统标识码 -->
+	 <SystemId>auto</SystemId>
+	 <!-- 请求日期 -->
+	 <TransDate>auto</TransDate>
+	 <!-- 请求时间 -->
+	 <TransTime>auto</TransTime>
+	 <!-- 姓名 -->
+	 <TrueName>auto</TrueName>
+	 <!-- 身份证号 -->
+	 <CertNo></CertNo>
+</ROOT>

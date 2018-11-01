@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<PSG_certIDverify xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xiaoher.jzdata.com/">  
+	<ErrorRes>
+	<Err_code>200</Err_code>
+	<Err_content>匹配成功</Err_content>
+	</ErrorRes>
+</PSG_certIDverify>

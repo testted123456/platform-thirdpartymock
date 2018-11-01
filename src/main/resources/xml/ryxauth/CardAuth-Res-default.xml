@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	 <!-- 00接口调用成功，60超时，96系统异常，99参数校验失败，98无此操作权限 -->
+	 <ResponseCode>00</ResponseCode>
+	 <!-- 成功为success，其他为异常原因 -->
+	 <ResponseMsg>success</ResponseMsg>
+	 <!-- 00-认证成功99-认证失败；如果为空则表示未发起认证-->
+	 <Result>00</Result>
+	 <!-- 如果认证异常，透传银行异常原因，非必传 -->
+	 <ResultMsg>银行异常原因</ResultMsg>
+</ROOT>

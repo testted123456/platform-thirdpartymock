@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ROOT>
+	 <time_used>358</time_used>
+	 <id_exceptions>
+	 	<!-- 0表示彩色照片，1表示黑白照片 -->
+	 	<id_photo_monochrome>0</id_photo_monochrome>
+	 	<!-- 0表示未被攻击，1表示曾被攻击 -->
+	 	<id_attacked>0</id_attacked>
+	 </id_exceptions>
+	 <result_faceid>
+	 	<!-- 比对结果的置信度(0~100), -->
+	 	<confidence>81.742</confidence>
+	 	<thresholds>
+	 		<!-- 误识率为千分之一的置信度阈值 -->
+	 		<le-3>62.169</le-3>
+	 		<!-- 误识率为万分之一的置信度阈值 -->
+	 		<le-4>69.315</le-4>
+	 		<!-- 误识率为十万分之一的置信度阈值 -->
+	 		<le-5>74.399</le-5>
+	 		<!-- 误识率为百万分之一的置信度阈值 -->
+	 		<le-6>78.038</le-6>
+	 	</thresholds>
+	 </result_faceid>
+	 <face_genuineness>
+	 	<mask_confidence>0.0</mask_confidence>
+	 	<screen_replay_confidence>0.0</screen_replay_confidence>
+	 	<mask_threshold>0.5</mask_threshold>
+	 	<synthetic_face_confidence>0.0</synthetic_face_confidence>
+	 	<synthetic_face_threshold>0.5</synthetic_face_threshold>
+	 	<screen_replay_threshold>0.5</screen_replay_threshold>
+	 	<face_replaced>0</face_replaced>
+	 </face_genuineness>
+	 <request_id>1540178702,f18f8f18-ba54-40fb-bfa6-e046e2063d32</request_id>
+</ROOT>

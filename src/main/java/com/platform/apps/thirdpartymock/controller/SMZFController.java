@@ -15,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,8 +27,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.nonobank.apps.HttpClient;
 import com.platform.apps.thirdpartymock.component.ApplicationContextProvider;
 import com.platform.apps.thirdpartymock.component.result.Result;
+import com.platform.apps.thirdpartymock.component.result.ResultCode;
 import com.platform.apps.thirdpartymock.component.result.ResultUtil;
 import com.platform.apps.thirdpartymock.entity.UPzf;
+import com.platform.apps.thirdpartymock.rule.Rule;
 import com.platform.apps.thirdpartymock.rule.upzf.UPZFRule;
 import com.platform.apps.thirdpartymock.service.UPzfService;
 import com.platform.apps.thirdpartymock.util.SMCryptUtil;
@@ -105,9 +109,28 @@ public class SMZFController {
 		return ResultUtil.success(reqMsgIds);
 	}
 	
+	@RequestMapping(value="setResponse/{name}")
 	@ResponseBody
-	@PostMapping(value="/callback")
-	public String callBack(@RequestParam String tranCode, @RequestParam String reqMsgId){
+	public Result setResponse(@PathVariable String name, @RequestBody Map<String, String> responseMap) {
+		String response = responseMap.get("response");
+		logger.info("开始保存快捷支付接口：{}", response);
+		UPZFRule rule = applicationContextProvider.getBean(name + "Rule", com.platform.apps.thirdpartymock.rule.upzf.UPZFRule.class);
+		rule.setResponse(name, response);
+		return ResultUtil.success();
+	}
+	
+	@RequestMapping(value="resetResponse/{name}")
+	@ResponseBody
+	public Result resetResponse(@PathVariable String name) {
+		logger.info("开始重置快捷支付接口：{}", name);
+		UPZFRule rule = applicationContextProvider.getBean(name + "Rule", com.platform.apps.thirdpartymock.rule.upzf.UPZFRule.class);
+		rule.setDefault(name);
+		return ResultUtil.success();
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/callback/{tranCode}/{reqMsgId}")
+	public Result callBack(@PathVariable String tranCode, @PathVariable String reqMsgId){
 		UPZFRule upzfRule = applicationContextProvider.getBean(tranCode + "Rule", com.platform.apps.thirdpartymock.rule.upzf.UPZFRule.class);
 
 		JSONObject reqJson = new JSONObject();
@@ -132,8 +155,9 @@ public class SMZFController {
 			e.printStackTrace();
 		}
  		
+ 		String res = null;
  		try {
-			return httpClient.getResBody(response);
+ 			res = httpClient.getResBody(response);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -141,8 +165,13 @@ public class SMZFController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+ 		
+ 		if(null != res ){
+ 			return ResultUtil.success();
+ 		}else{
+ 			return ResultUtil.error(ResultCode.UNKOWN_ERROR.getCode(), "call back failed...");
+ 		}
 			
-		return "call back failed...";
 		
 	}
 	

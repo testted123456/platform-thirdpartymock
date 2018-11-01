@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ROOT>
+	 <time_used>358</time_used>
+	 <id_card_number>auto</id_card_number>
+	 <request_id>auto</request_id>
+	 <!-- 身份证有效期 2016.08.03-2026.08.03 -->
+	 <valid_date>2016.08.03-2026.08.03</valid_date>
+	 <!-- 审核机关 -->
+	 <issued_by>auto</issued_by>
+	 <legality>
+		  <Edited>0.0</Edited>
+		  <Photocopy>0.0</Photocopy>
+		  <ID_Photo>1.0</ID_Photo>
+		  <Screen>0.0</Screen>
+		  <Temporary_ID_Photo>0.0</Temporary_ID_Photo>
+	  </legality>
+	  <address>auto</address>
+	 <side>back</side>
+</ROOT>

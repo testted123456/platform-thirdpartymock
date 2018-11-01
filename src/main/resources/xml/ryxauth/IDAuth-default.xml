@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	 <!-- 00接口调用成功；96内容系统异常；99系统标识（机构）不存在；98无此操作权限；01证件类型不能为空；02身份证号码不能为空；03身份证号码校验失败；60交易发送超时； -->
+	 <ResponseCode>00</ResponseCode>
+	 <!-- 成功为success，其他为异常原因 -->
+	 <ResponseMsg>success</ResponseMsg>
+	 <!-- 00-认证成功99-认证失败；如果为空则表示未发起认证-->
+	 <Result>00</Result>
+	 <!-- 业务流水号 -->
+	 <ReqSerialNo>auto</ReqSerialNo>
+	 <!-- 业务系统标识码 -->
+	 <SystemId>auto</SystemId>
+	 <!-- 请求日期 -->
+	 <TransDate>auto</TransDate>
+	 <!-- 请求时间 -->
+	 <TransTime>auto</TransTime>
+	 <!-- 平台流水号 -->
+	 <PlatSerial>auto</PlatSerial>
+</ROOT>

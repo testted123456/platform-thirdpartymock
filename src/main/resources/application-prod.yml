@@ -1,7 +1,17 @@
 server:
- port: 9500
+ port: 8443
  context-path: /mock
+ ssl: 
+  enabled: true
+  key-store: tomcat.key
+  key-store-type: JKS
+  kay-alias: tomcat
+  key-store-password: 123456
 spring:
+  redis:
+    host: 192.168.1.121
+    port: 6379
+    timeout: 20000
   datasource:
     url: jdbc:mysql://192.168.1.121:3306/mock?useUnicode=true&characterEncoding=utf-8
     username: root

@@ -4,6 +4,11 @@
 	<encryptData>
 		 <!-- 应答码，成功：000000，补单成功：000090 -->
 		 <respCode>000000</respCode>
+		 <respType>S</respType>
+		 <!-- 对账日期 -->
+		 <settleDate>auto</settleDate>
+		 <!-- 交易金额 -->
+		 <totalAmount>auto</totalAmount>
 		 <data>
 		 	<!-- 交易金额 -->
 		 	<totalAmount>auto</totalAmount>

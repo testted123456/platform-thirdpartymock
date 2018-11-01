@@ -56,9 +56,9 @@ public class FastPayController {
 		return ResultUtil.success();
 	}
 	
-	@RequestMapping(value="resetResponse")
+	@RequestMapping(value="resetResponse/{name}")
 	@ResponseBody
-	public Result resetResponse(@RequestParam String name) {
+	public Result resetResponse(@PathVariable String name) {
 		logger.info("开始重置快捷支付接口：{}", name);
 		Rule rule = applicationContextProvider.getBean(name + "Rule", com.platform.apps.thirdpartymock.rule.Rule.class);
 		rule.setDefault(name);
